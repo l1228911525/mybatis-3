@@ -44,7 +44,7 @@ public class Demo {
 
   @Test
   public void testCache() {
-    
+    System.out.println("test test cache");
   }
 
 }
