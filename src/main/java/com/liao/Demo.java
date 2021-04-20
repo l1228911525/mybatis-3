@@ -24,8 +24,16 @@ public class Demo {
     SqlSession sqlSession = sqlSessionFactory.openSession();
     //获取接口的动态代理对象
     AdminDao adminDao = sqlSession.getMapper(AdminDao.class);
+
+    System.out.println("第一次查询");
     //调用接口中的方法
     Admin admin = adminDao.getAdminById(1);
+
+    System.out.println("第二次查询");
+    Admin admin2 = adminDao.getAdminById(1);
+
+    System.out.println(admin == admin2);
+
     //List<Country> country = countryDao.getAllCountry();
     System.out.println(admin);
     sqlSession.close();
@@ -45,6 +53,24 @@ public class Demo {
   @Test
   public void testCache() {
     System.out.println("test test cache");
+
+    String str = "234";
+
+    int sum = 0;
+    int product = 1;
+
+    for(int i = 0; i < str.length(); ++i) {
+
+      char c = str.charAt(i);
+
+      int a = Integer.parseInt(String.valueOf(c));
+
+      sum += a;
+      product *= a;
+
+    }
+
+    System.out.println(product - sum);
   }
 
 }
